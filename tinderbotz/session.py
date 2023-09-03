@@ -114,6 +114,9 @@ class Session:
 
         # Getting the chromedriver from cache or download it from internet
         print("Getting ChromeDriver ...")
+        options.add_argument(r"--user-data-dir=C:\Users\tanmay kule\AppData\Local\Google\Chrome\User Data") #e.g. C:\Users\You\AppData\Local\Google\Chrome\User Data
+        options.add_argument(r'--profile-directory=Profile 1')
+
         # self.browser = uc.Chrome(options=options)  # ChromeDriverManager().install(),
         self.browser = webdriver.Chrome(chrome_options=options)
         # self.browser.set_window_size(1250, 750)
