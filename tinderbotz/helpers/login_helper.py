@@ -33,12 +33,13 @@ class LoginHelper:
         self._click_login_button()
 
         # wait for google button to appear
-        xpath = '//*[@aria-label="Log in with Google"]'
+        css_selector = '#t-1801918317 > main > div.Expand--s.theme-dark > div > div.Ta\(c\).H\(100\%\).D\(f\).Fxd\(c\).Pos\(r\) > div > div > div.H\(100\%\).D\(f\).Fxd\(c\) > div.Mt\(a\) > span > div.Mb\(-6px\)'
         try:
+            print("finding")
             WebDriverWait(self.browser, self.delay).until(EC.presence_of_element_located(
-                (By.XPATH, xpath)))
+                (By.CSS_SELECTOR, css_selector)))
 
-            self.browser.find_element(By.XPATH, xpath).click()
+            self.browser.find_element(By.CSS_SELECTOR, css_selector).click()
 
         except TimeoutException:
             self._exit_by_time_out()

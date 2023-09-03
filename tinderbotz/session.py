@@ -1,7 +1,8 @@
 # Selenium: automation of browser
 from selenium import webdriver
 # from webdriver_manager.chrome import ChromeDriverManager
-import undetected_chromedriver.v2 as uc
+import undetected_chromedriver as uc
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -76,44 +77,45 @@ class Session:
         # Go further with the initialisation
         # Setting some options of the browser here below
 
-        options = uc.ChromeOptions()
+        options = Options()
 
-        # Create empty profile to avoid annoying Mac Popup
-        if store_session:
-            if not user_data:
-                user_data = f"{Path().absolute()}/chrome_profile/"
-            if not os.path.isdir(user_data):
-                os.mkdir(user_data)
-
-            Path(f'{user_data}First Run').touch()
-            options.add_argument(f"--user-data-dir={user_data}")
+        # # Create empty profile to avoid annoying Mac Popup
+        # if store_session:
+        #     if not user_data:
+        #         user_data = f"{Path().absolute()}/chrome_profile/"
+        #     if not os.path.isdir(user_data):
+        #         os.mkdir(user_data)
+        #
+        #     Path(f'{user_data}First Run').touch()
+        #     options.add_argument(f"--user-data-dir={user_data}")
 
         #options.add_argument("--start-maximized")
-        options.add_argument('--no-first-run --no-service-autorun --password-store=basic')
-        options.add_argument("--lang=en-GB")
+        # options.add_argument('--no-first-run --no-service-autorun --password-store=basic')
+        # options.add_argument("--lang=en-GB")
+        options.add_argument("--enable-automation")
 
-        if headless:
-            options.headless = True
-
-        if proxy:
-            if '@' in proxy:
-                parts = proxy.split('@')
-
-                user = parts[0].split(':')[0]
-                pwd = parts[0].split(':')[1]
-
-                host = parts[1].split(':')[0]
-                port = parts[1].split(':')[1]
-
-                extension = get_proxy_extension(PROXY_HOST=host, PROXY_PORT=port, PROXY_USER=user, PROXY_PASS=pwd)
-                options.add_extension(extension)
-            else:
-                options.add_argument(f'--proxy-server=http://{proxy}')
+        # if headless:
+        #     options.headless = True
+        #
+        # if proxy:
+        #     if '@' in proxy:
+        #         parts = proxy.split('@')
+        #
+        #         user = parts[0].split(':')[0]
+        #         pwd = parts[0].split(':')[1]
+        #
+        #         host = parts[1].split(':')[0]
+        #         port = parts[1].split(':')[1]
+        #
+        #         extension = get_proxy_extension(PROXY_HOST=host, PROXY_PORT=port, PROXY_USER=user, PROXY_PASS=pwd)
+        #         options.add_extension(extension)
+        #     else:
+        #         options.add_argument(f'--proxy-server=http://{proxy}')
 
         # Getting the chromedriver from cache or download it from internet
         print("Getting ChromeDriver ...")
-        self.browser = uc.Chrome(options=options)  # ChromeDriverManager().install(),
-        # self.browser = webdriver.Chrome(options=options)
+        # self.browser = uc.Chrome(options=options)  # ChromeDriverManager().install(),
+        self.browser = webdriver.Chrome(chrome_options=options)
         # self.browser.set_window_size(1250, 750)
 
         # clear the console based on the operating system you're using

@@ -7,7 +7,7 @@ from tinderbotz.helpers.constants_helper import *
 
 if __name__ == "__main__":
     # creates instance of session
-    session = Session()
+    # session = Session()
     # Or if you want to use a proxy
     # AUTHORISED BY IP -> "HOST:PORT"
     # AUTHORISED BY USERNAME, PASSWORD -> "username:password@HOST:PORT"
@@ -17,14 +17,16 @@ if __name__ == "__main__":
     session.set_custom_location(latitude=50.879829, longitude=4.700540)
     
     # replace this with your own email and password!
-    email = "example@gmail.com"
-    password = "password123"
+    email = "tanmaykule17@gmail.com"
+    password = "oblion13"
     
     # login using your google account with a verified email!
+    print("here")
     session.login_using_google(email, password)
+    print("here2")
 
     # Alternatively you can login using facebook with a connected profile!
-    session.login_using_facebook(email, password)
+    # session.login_using_facebook(email, password)
 
     # Alternatively, you can also use your phone number to login
     '''
@@ -34,7 +36,7 @@ if __name__ == "__main__":
     '''
     country = "Belgium"
     phone_number = "479011124"
-    session.login_using_sms(country, phone_number)
+    # session.login_using_sms(country, phone_number)
 
     # spam likes, dislikes and superlikes
     # to avoid being banned:
