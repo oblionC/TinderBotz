@@ -115,8 +115,9 @@ class Session:
 
         # Getting the chromedriver from cache or download it from internet
         print("Getting ChromeDriver ...")
-        options.add_argument(f"--user-data-dir={user_data_dir}") #e.g. C:\Users\You\AppData\Local\Google\Chrome\User Data
-        options.add_argument(f'--profile-directory={profile_dir}')
+
+        options.add_argument(fr"--user-data-dir={user_data_dir}") #e.g. C:\Users\You\AppData\Local\Google\Chrome\User Data
+        options.add_argument(fr'--profile-directory={profile_dir}')
 
         # self.browser = uc.Chrome(options=options)  # ChromeDriverManager().install(),
         self.browser = webdriver.Chrome(chrome_options=options)

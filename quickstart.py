@@ -14,14 +14,14 @@ if __name__ == "__main__":
     session = Session(proxy="23.23.23.23:3128")
 
     # set location (Don't need to be logged in for this)
-    session.set_custom_location(latitude=50.879829, longitude=4.700540)
+    session.set_custom_location(latitude=40.292097, longitude=-123.367921)
     
     # replace this with your own email and password!
-    email = "example@gmail.com"
-    password = "example"
+    # email = "example@gmail.com"
+    # password = "example"
     
     # login using your google account with a verified email!
-    session.login_using_google(email, password)
+    # session.login_using_google(email, password)
 
     # Alternatively you can login using facebook with a connected profile!
     # session.login_using_facebook(email, password)
@@ -41,9 +41,9 @@ if __name__ == "__main__":
     #   - it's best to apply a randomness in your liking by sometimes disliking.
     #   - some sleeping between two actions is recommended
     # by default the amount is 1, ratio 100% and sleep 1 second
-    session.like(amount=10, ratio="72.5%", sleep=1)
+    session.like(amount=100, ratio="72.5%", sleep=1)
     session.dislike(amount=1)
-    session.superlike(amount=1)
+
     
     # adjust allowed distance for geomatches
     # Note: PARAMETER IS IN KILOMETERS!
